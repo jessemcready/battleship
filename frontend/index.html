@@ -7,10 +7,78 @@
     <link rel="stylesheet" href="main.css">
   </head>
   <body>
-      <div id="board">
+      <div id="board" ondrop="drop(event)" ondragover="allowDrop(event)">
 
       </div>
-      
+
+      <div id="score-display" class="">
+          <h3>Your Score</h3>
+          <h5 id="playerScore">0</h5>
+      </div>
+
+      <div id="displayShip">
+
+        <div class="empire">
+         <h5>AT-ST Walker</h5>
+          <img src="assets/images/empire_at-st walker.jpeg" data-id="2" draggable="true" ondragstart="drag(event)">
+          <h6>Value: 2</h6>
+        </div>
+
+        <div class="empire">
+          <h5>Death Star</h5>
+          <img src="assets/images/empire_death-Star.jpeg" data-id="5" draggable="true" ondragstart="drag(event)">
+          <h6>Value: 5</h6>
+        </div>
+
+        <div class="empire">
+          <h5>Imperial Shuttle</h5>
+          <img  src="assets/images/empire_imperial shuttle.jpeg" data-id="3" draggable="true" ondragstart="drag(event)">
+          <h6>Value: 3</h6>
+        </div>
+
+        <div class="empire">
+          <h5>Star Destroyer</h5>
+          <img src="assets/images/empire_star-Destroyer.jpeg" data-id="4" draggable="true" ondragstart="drag(event)">
+          <h6>Value: 4</h6>
+        </div>
+
+        <div class="empire">
+          <h5>TIE Fighter</h5>
+          <img src="assets/images/empire_tiex1-headon.jpg"  data-id="3" draggable="true" ondragstart="drag(event)">
+          <h6>Value: 3</h6>
+        </div>
+
+        <div class="rebel">
+          <h5>Millennium Falcon</h5>
+          <img src="assets/images/rebel_millennium-Falcon.jpeg" data-id="5" draggable="true" ondragstart="drag(event)">
+          <h6>Value: 5</h6>
+        </div>
+
+        <div class="rebel">
+          <h5>Podracer Anakin</h5>
+          <img src="assets/images/rebel_podracerAnakin.jpg" data-id="2" draggable="true" ondragstart="drag(event)">
+          <h6>Value: 2</h6>
+        </div>
+
+        <div class="rebel">
+          <h5>Republic Attack Gunship</h5>
+          <img src="assets/images/rebel_republic_attack_gunship.jpeg" data-id="3" draggable="true" ondragstart="drag(event)">
+          <h6>Value: 3</h6>
+        </div>
+
+        <div class="rebel">
+          <h5>Tantive IV</h5>
+          <img src="assets/images/rebel_tantive 4.jpeg" data-id="4" draggable="true" ondragstart="drag(event)">
+          <h6>Value: 4</h6>
+        </div>
+
+        <div class="rebel">
+          <h5>X-Wing Fighter</h5>
+          <img src="assets/images/rebel_X-Wing-Fighter.jpeg" data-id="3" draggable="true" ondragstart="drag(event)">
+          <h6>Value: 3</h6>
+        </div>
+      </div>
+
   </body>
   <script src="index.js" type="text/javascript"></script>
 </html>

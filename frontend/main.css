@@ -1,8 +1,20 @@
 #board {
   display: grid;
-  grid-template-columns: repeat(10, 50px);
-  grid-template-rows: repeat(10, 50px);
+  grid-template-columns: repeat(10, 75px);
+  grid-template-rows: repeat(10, 75px);
+
 }
 #board div{
   border: 1px solid;
+}
+
+img {
+  width: 75px;
+  height: 75px;
+}
+
+#displayShip {
+  display: flex;
+  justify-content: space-around;
+
 }
