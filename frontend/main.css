@@ -1,10 +1,19 @@
-#board {
+#board, #boardTwo {
   display: grid;
+  float: left;
   grid-template-columns: repeat(10, 75px);
   grid-template-rows: repeat(10, 75px);
 
 }
-#board div{
+
+#playerOneGuess, #playerTwoGuess {
+  display: grid;
+  float: right;
+  grid-template-columns: repeat(10, 50px);
+  grid-template-rows: repeat(10, 50px);
+}
+
+#board div, #boardTwo div, #playerOneGuess div, #playerTwoGuess div{
   border: 1px solid;
 }
 
@@ -17,4 +26,9 @@ img {
   display: flex;
   justify-content: space-around;
 
+}
+
+#score-display{
+  text-align: center;
+  vertical-align: middle;
 }
