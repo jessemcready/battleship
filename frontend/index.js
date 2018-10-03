@@ -18,7 +18,7 @@ function drop(event) {
   console.log(event.target, "log drop event target")
   let dropImage = event.dataTransfer.getData("text")
   console.log(dropImage, "logging drop image event")
-  event.target.innerHTML = `<img src=${dropImage}>`
+  event.target.innerHTML = `<img src=${dropImage} draggable="true" ondragstart="drag(event)">`
   event.target.className = "occupied"
   dropCounter++
   if (dropCounter === 17) {
