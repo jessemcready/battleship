@@ -9,17 +9,24 @@ function allowDrop(event) {
 }
 
 function drag(event) {
-  event.dataTransfer.setData("text", event.target.src)
-  console.log(event.target, "logging dag event")
+  event.dataTransfer.setData("URL", event.target.src)
 }
 
 function drop(event) {
   event.preventDefault()
-  console.log(event.target, "log drop event target")
-  let dropImage = event.dataTransfer.getData("text")
-  console.log(dropImage, "logging drop image event")
-  event.target.innerHTML = `<img src=${dropImage} draggable="true" ondragstart="drag(event)">`
+  let dropImage = event.dataTransfer.getData("URL")
+  const draggedImageId = dropImage.split('/')[dropImage.split('/').length - 1]
+  event.target.innerHTML = `<img class="${draggedImageId}" src=${dropImage} draggable="true" ondragstart="drag(event)">`
   event.target.className = "occupied"
+  let draggedImage = document.getElementById(draggedImageId)
+  draggedImage.dataset.id -= 1
+  if(draggedImage.dataset.id == 0){
+    draggedImage.parentElement.style.display = 'none'
+    const images = document.getElementsByClassName(`${draggedImageId}`)
+    for(let i = 0; i < images.length; i++){
+      images[i].setAttribute('draggable', false)
+    }
+  }
   dropCounter++
   if (dropCounter === 17) {
     alert("Your ship positions are set!")
@@ -66,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const allRebelShips = document.querySelectorAll(".rebel")
 
   //fetch request for player1
-  fetch('http://localhost:3000/users/3')
+  fetch('http://localhost:3000/users/1')
     .then((response) => {
       return response.json()
     })
@@ -87,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
   //fetch request for player2
-  fetch('http://localhost:3000/users/4')
+  fetch('http://localhost:3000/users/2')
     .then((response) => {
       return response.json()
     })
@@ -230,6 +237,5 @@ function attackShips() {
 
 //secondary (styling)
 //if it's a hit (sound effect)
-//use the h6 tag where the Value text is to decrement the Value, everytime its used
 //include the CSS style
 //include audio
