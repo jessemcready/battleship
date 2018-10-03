@@ -1,9 +1,18 @@
+body {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 10px;
+  color: yellow;
+  background-color: black;
+  background-image: url("https://media.giphy.com/media/aRZ4vTsHnyW6A/giphy.gif");
+  background-size: cover;
+}
+
+
 #board, #boardTwo {
   display: grid;
   float: left;
   grid-template-columns: repeat(10, 75px);
   grid-template-rows: repeat(10, 75px);
-
 }
 
 #playerOneGuess, #playerTwoGuess {
@@ -14,12 +23,16 @@
 }
 
 #board div, #boardTwo div, #playerOneGuess div, #playerTwoGuess div{
-  border: 1px solid;
+  border: 3px solid;
+  background-color: gray;
+  border-radius: 9px;
+  border-color: yellow;
 }
 
 img {
   width: 75px;
   height: 75px;
+  border: 1px solid;
 }
 
 #displayShip {
