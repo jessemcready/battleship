@@ -54,8 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const allEmpireShips = document.querySelectorAll(".empire")
   const allRebelShips = document.querySelectorAll(".rebel")
-  const gameLobbyMusic = document.getElementById('Cantina_Band')
-  gameLobbyMusic.play()
+
 
 
   // get the board container element
@@ -178,18 +177,25 @@ function attackShips() {
 
   const tieFighterFire = document.getElementById('TIE_Fighter_Fire')
   const xWingFire = document.getElementById('XWing_Fire')
+  const explodeShip = document.getElementById('XWing_Explode')
+  const vaderHaveYou = document.getElementById('Darth_Vader_I_Have_You_Now')
+  const yodaForce = document.getElementById('Yoda_Force')
+  const vaderDontFail = document.getElementById('Darth_Vader_Dont_Fail')
+  const itsATrap = document.getElementById('Its_A_Trap')
 
 
   //check this.id for playerOne click is equal to board or boardTwo
   if (event.target.className === "grid-square") {
     if (this.id === "playerOneGuess") {
       if (playerTwoSetBoard.querySelector(`#${event.target.dataset.id}`).className === "occupied") {
+        vaderHaveYou.play()
         tieFighterFire.play()
         event.target.style.backgroundColor = "red"
         playerTwoSetBoard.querySelector(`#${event.target.dataset.id}`).innerHTML = `<img src="https://media.giphy.com/media/xupGR5MORpnk4/giphy.gif">`
         scoreCounter++
         playerScore.innerText = scoreCounter
         if (scoreCounter === 17) {
+          explodeShip.play()
           alert("You won!")
         }
         this.style.display = "none"
@@ -197,6 +203,7 @@ function attackShips() {
         playerTwoSetBoard.style.display = "grid"
         document.getElementById("playerTwoGuess").style.display = "grid"
       } else if (playerTwoSetBoard.querySelector(`#${event.target.dataset.id}`).className !== "occupied") {
+      vaderDontFail.play()
       tieFighterFire.play()
       event.target.style.backgroundColor = "yellow"
       playerTwoSetBoard.querySelector(`#${event.target.dataset.id}`).style.backgroundColor = "yellow"
@@ -208,12 +215,14 @@ function attackShips() {
   } //end of if statement in line 169
   else {
     if (playerOneSetBoard.querySelector(`#${event.target.dataset.id}`).className === "occupied") {
+      yodaForce.play()
       xWingFire.play()
       event.target.style.backgroundColor = "red"
       playerOneSetBoard.querySelector(`#${event.target.dataset.id}`).innerHTML = `<img src="https://media.giphy.com/media/xupGR5MORpnk4/giphy.gif">`
       scoreCounterTwo++
       playerTwoScore.innerText = scoreCounterTwo
       if (scoreCounterTwo === 17) {
+        explodeShip.play()
         alert("You won!")
       }
       this.style.display = "none"
@@ -221,6 +230,7 @@ function attackShips() {
       playerOneSetBoard.style.display = "grid"
       document.getElementById("playerOneGuess").style.display = "grid"
     } else if (playerOneSetBoard.querySelector(`#${event.target.dataset.id}`).className !== "occupied") {
+      itsATrap.play()
       xWingFire.play()
     event.target.style.backgroundColor = "yellow"
     playerOneSetBoard.querySelector(`#${event.target.dataset.id}`).style.backgroundColor = "yellow"
