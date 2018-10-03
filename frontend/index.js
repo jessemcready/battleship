@@ -45,6 +45,7 @@ function drop(event) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+
   const rows = 10;
   const cols = 10;
   const squareSize = 75;
