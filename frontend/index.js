@@ -38,28 +38,8 @@ function drop(event) {
     } else {
       document.getElementById("board").style.display = "none"
       document.getElementById("boardTwo").style.display = "grid"
-      // const allEmpireShips = document.querySelectorAll(".empire")
-      // const allRebelShips = document.querySelectorAll(".rebel")
       dropCounter = 0;
       displayShips(user2)
-      // if (user2.side === "rebel") {
-      //   allEmpireShips.forEach((empire) => {
-      //     empire.style.display = "none"
-      //   })
-      //   allRebelShips.forEach((rebel) => {
-      //     rebel.style.display = "block"
-      //   })
-      //
-      // } //end of if statement
-      // else {
-      //   allRebelShips.forEach((rebel) => {
-      //     rebel.style.display = "none"
-      //   })
-      //   allEmpireShips.forEach((empire) => {
-      //     empire.style.display = "block"
-      //   })
-      //
-      // }
     }
   }
 }
@@ -69,7 +49,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const cols = 10;
   const squareSize = 75;
 
+
   const userForm = document.getElementById('user-form')
+
+  const allEmpireShips = document.querySelectorAll(".empire")
+  const allRebelShips = document.querySelectorAll(".rebel")
+  const gameLobbyMusic = document.getElementById('Cantina_Band')
+  gameLobbyMusic.play()
+
 
   // get the board container element
   //board will be the same representation to playerTwoGuess
