@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params)
+    @user = User.find_or_create_by(user_params)
     render json: @user, status: :created
   end
 

@@ -66,6 +66,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const playerTwoGuess = document.getElementById("playerTwoGuess")
   const gameArea = document.getElementById('gameArea')
 
+  userForm.addEventListener('click', event => {
+    document.getElementById('Cantina_Band').autoplay = true
+    document.getElementById('Cantina_Band').load()
+  })
+
   userForm.addEventListener('submit', event => {
     event.preventDefault();
     const player1 = userForm.querySelectorAll('input')[0].value
@@ -85,6 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }).then(res => res.json()).then(userData => {
       user = userData
       user.side = 'rebel'
+      document.getElementById('player-one-score').innerText = `${user.name}'s Score`
     }).then( () => {
       fetch('http://localhost:3000/users', {
         method: 'POST',
@@ -101,10 +107,15 @@ document.addEventListener('DOMContentLoaded', () => {
       }).then(res => res.json()).then(userData => {
         user2 = userData
         user2.side = 'empire'
+        document.getElementById('player-two-score').innerText = `${user2.name}'s Score`
         userForm.parentElement.style.display = 'none'
         gameArea.style.display = 'block'
       }).then( () => {
         displayShips(user)
+        document.getElementById('Cantina_Band').pause()
+        document.getElementById('Theme_Music').autoplay = true
+        document.getElementById('Theme_Music').loop = true
+        document.getElementById('Theme_Music').load()
       })
     })
   })
