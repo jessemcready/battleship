@@ -14,32 +14,34 @@ function drag(event) {
 
 function drop(event) {
   event.preventDefault()
-  let dropImage = event.dataTransfer.getData("URL")
-  const draggedImageId = dropImage.split('/')[dropImage.split('/').length - 1]
-  event.target.innerHTML = `<img class="${draggedImageId}" src=${dropImage} draggable="true" ondragstart="drag(event)">`
-  event.target.className = "occupied"
-  let draggedImage = document.getElementById(draggedImageId)
-  draggedImage.dataset.id -= 1
-  if(draggedImage.dataset.id == 0){
-    draggedImage.parentElement.style.display = 'none'
-    const images = document.getElementsByClassName(`${draggedImageId}`)
-    for(let i = 0; i < images.length; i++){
-      images[i].setAttribute('draggable', false)
+  if(event.target.className === 'grid-square'){
+    let dropImage = event.dataTransfer.getData("URL")
+    const draggedImageId = dropImage.split('/')[dropImage.split('/').length - 1]
+    event.target.innerHTML = `<img class="${draggedImageId}" src=${dropImage} draggable="true" ondragstart="drag(event)">`
+    event.target.className = "occupied"
+    let draggedImage = document.getElementById(draggedImageId)
+    draggedImage.dataset.id -= 1
+    if(draggedImage.dataset.id == 0){
+      draggedImage.parentElement.style.display = 'none'
+      const images = document.getElementsByClassName(`${draggedImageId}`)
+      for(let i = 0; i < images.length; i++){
+        images[i].setAttribute('draggable', false)
+      }
     }
-  }
-  dropCounter++
-  if (dropCounter === 17) {
-    alert("Your ship positions are set!")
-    if (document.getElementById("board").style.display === "none") {
-      document.getElementById("boardTwo").style.display = "none"
-      document.getElementById("board").style.display = "grid"
-      document.getElementById("playerOneGuess").style.display = "grid"
-      document.getElementById("displayShip").style.display = "none"
-    } else {
-      document.getElementById("board").style.display = "none"
-      document.getElementById("boardTwo").style.display = "grid"
-      dropCounter = 0;
-      displayShips(user2)
+    dropCounter++
+    if (dropCounter === 17) {
+      alert("Your ship positions are set!")
+      if (document.getElementById("board").style.display === "none") {
+        document.getElementById("boardTwo").style.display = "none"
+        document.getElementById("board").style.display = "grid"
+        document.getElementById("playerOneGuess").style.display = "grid"
+        document.getElementById("displayShip").style.display = "none"
+      } else {
+        document.getElementById("board").style.display = "none"
+        document.getElementById("boardTwo").style.display = "grid"
+        dropCounter = 0;
+        displayShips(user2)
+      }
     }
   }
 }
