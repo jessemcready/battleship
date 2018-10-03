@@ -71,6 +71,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const allEmpireShips = document.querySelectorAll(".empire")
   const allRebelShips = document.querySelectorAll(".rebel")
+  const gameLobbyMusic = document.getElementById('Cantina_Band')
+  gameLobbyMusic.play()
+
 
   //fetch request for player1
   fetch('http://localhost:3000/users/1')
@@ -197,7 +200,7 @@ function attackShips() {
         playerTwoSetBoard.style.display = "grid"
         document.getElementById("playerTwoGuess").style.display = "grid"
       } else if (playerTwoSetBoard.querySelector(`#${event.target.dataset.id}`).className !== "occupied") {
-      tieFighterFire.play()  
+      tieFighterFire.play()
       event.target.style.backgroundColor = "yellow"
       playerTwoSetBoard.querySelector(`#${event.target.dataset.id}`).style.backgroundColor = "yellow"
       this.style.display = "none"
