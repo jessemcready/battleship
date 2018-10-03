@@ -175,7 +175,7 @@ function attackShips() {
     if (this.id === "playerOneGuess") {
       if (playerTwoSetBoard.querySelector(`#${event.target.dataset.id}`).className === "occupied") {
         event.target.style.backgroundColor = "red"
-        playerTwoSetBoard.querySelector(`#${event.target.dataset.id}`).innerHTML = `<img src="assets/images/deathstar_implosion.jpeg">`
+        playerTwoSetBoard.querySelector(`#${event.target.dataset.id}`).innerHTML = `<img src="https://media.giphy.com/media/xupGR5MORpnk4/giphy.gif">`
         scoreCounter++
         playerScore.innerText = scoreCounter
         if (scoreCounter === 17) {
@@ -198,7 +198,7 @@ function attackShips() {
   else {
     if (playerOneSetBoard.querySelector(`#${event.target.dataset.id}`).className === "occupied") {
       event.target.style.backgroundColor = "red"
-      playerOneSetBoard.querySelector(`#${event.target.dataset.id}`).innerHTML = `<img src="assets/images/deathstar_implosion.jpeg">`
+      playerOneSetBoard.querySelector(`#${event.target.dataset.id}`).innerHTML = `<img src="https://media.giphy.com/media/xupGR5MORpnk4/giphy.gif">`
       scoreCounterTwo++
       playerTwoScore.innerText = scoreCounterTwo
       if (scoreCounterTwo === 17) {
