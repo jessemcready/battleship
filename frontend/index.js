@@ -221,9 +221,6 @@ function attackShips() {
 }
 
 //Todo list:
-//guess board should display hit or miss once all ship positions have been set
-//alert the user when they used up their value points
-//increment score
 
 //secondary (styling)
 //if it's a hit (sound effect)
