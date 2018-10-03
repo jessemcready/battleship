@@ -75,14 +75,16 @@ div.grid-square > img {
   height: 2em;
   border: 1px solid #ccc;
   margin-bottom: 10px;
+  margin-top: 5px;
 }
 
 #submitPlayers{
-  width: 97%;
+  width: 100%;
   color: yellow;
   background-color: black;
   font-family: 'Press Start 2P', cursive;
-
+  border: none;
+}
 h5 {
   font-size: auto;
 }
