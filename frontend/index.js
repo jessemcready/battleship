@@ -176,11 +176,15 @@ function attackShips() {
   const playerScore = document.getElementById("playerScore")
   const playerTwoScore = document.getElementById("playerTwoScore")
 
+  const tieFighterFire = document.getElementById('TIE_Fighter_Fire')
+  const xWingFire = document.getElementById('XWing_Fire')
+
 
   //check this.id for playerOne click is equal to board or boardTwo
   if (event.target.className === "grid-square") {
     if (this.id === "playerOneGuess") {
       if (playerTwoSetBoard.querySelector(`#${event.target.dataset.id}`).className === "occupied") {
+        tieFighterFire.play()
         event.target.style.backgroundColor = "red"
         playerTwoSetBoard.querySelector(`#${event.target.dataset.id}`).innerHTML = `<img src="https://media.giphy.com/media/xupGR5MORpnk4/giphy.gif">`
         scoreCounter++
@@ -193,8 +197,8 @@ function attackShips() {
         playerTwoSetBoard.style.display = "grid"
         document.getElementById("playerTwoGuess").style.display = "grid"
       } else if (playerTwoSetBoard.querySelector(`#${event.target.dataset.id}`).className !== "occupied") {
+      tieFighterFire.play()  
       event.target.style.backgroundColor = "yellow"
-
       playerTwoSetBoard.querySelector(`#${event.target.dataset.id}`).style.backgroundColor = "yellow"
       this.style.display = "none"
       playerOneSetBoard.style.display = "none"
@@ -204,6 +208,7 @@ function attackShips() {
   } //end of if statement in line 169
   else {
     if (playerOneSetBoard.querySelector(`#${event.target.dataset.id}`).className === "occupied") {
+      xWingFire.play()
       event.target.style.backgroundColor = "red"
       playerOneSetBoard.querySelector(`#${event.target.dataset.id}`).innerHTML = `<img src="https://media.giphy.com/media/xupGR5MORpnk4/giphy.gif">`
       scoreCounterTwo++
@@ -216,6 +221,7 @@ function attackShips() {
       playerOneSetBoard.style.display = "grid"
       document.getElementById("playerOneGuess").style.display = "grid"
     } else if (playerOneSetBoard.querySelector(`#${event.target.dataset.id}`).className !== "occupied") {
+      xWingFire.play()
     event.target.style.backgroundColor = "yellow"
     playerOneSetBoard.querySelector(`#${event.target.dataset.id}`).style.backgroundColor = "yellow"
     this.style.display = "none"
