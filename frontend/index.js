@@ -200,23 +200,23 @@ function attackShips() {
   if (event.target.className === "grid-square") {
     if (this.id === "playerOneGuess") {
       if (playerTwoSetBoard.querySelector(`#${event.target.dataset.id}`).className === "occupied") {
-        vaderHaveYou.play()
-        tieFighterFire.play()
+        yodaForce.play()
+        xWingFire.play()
         event.target.style.backgroundColor = "red"
         playerTwoSetBoard.querySelector(`#${event.target.dataset.id}`).innerHTML = `<img src="https://media.giphy.com/media/xupGR5MORpnk4/giphy.gif">`
         scoreCounter++
         playerScore.innerText = scoreCounter
         if (scoreCounter === 17) {
           explodeShip.play()
-          alert("You won!")
+          alert("The Rebels are Victorious")
         }
         this.style.display = "none"
         playerOneSetBoard.style.display = "none"
         playerTwoSetBoard.style.display = "grid"
         document.getElementById("playerTwoGuess").style.display = "grid"
       } else if (playerTwoSetBoard.querySelector(`#${event.target.dataset.id}`).className !== "occupied") {
-      vaderDontFail.play()
-      tieFighterFire.play()
+        itsATrap.play()
+        xWingFire.play()
       event.target.style.backgroundColor = "yellow"
       playerTwoSetBoard.querySelector(`#${event.target.dataset.id}`).style.backgroundColor = "yellow"
       this.style.display = "none"
@@ -227,23 +227,23 @@ function attackShips() {
   } //end of if statement in line 169
   else {
     if (playerOneSetBoard.querySelector(`#${event.target.dataset.id}`).className === "occupied") {
-      yodaForce.play()
-      xWingFire.play()
+      vaderHaveYou.play()
+      tieFighterFire.play()
       event.target.style.backgroundColor = "red"
       playerOneSetBoard.querySelector(`#${event.target.dataset.id}`).innerHTML = `<img src="https://media.giphy.com/media/xupGR5MORpnk4/giphy.gif">`
       scoreCounterTwo++
       playerTwoScore.innerText = scoreCounterTwo
       if (scoreCounterTwo === 17) {
         explodeShip.play()
-        alert("You won!")
+        alert("The Empire has Defeated the Rebel Scum")
       }
       this.style.display = "none"
       playerTwoSetBoard.style.display = "none"
       playerOneSetBoard.style.display = "grid"
       document.getElementById("playerOneGuess").style.display = "grid"
     } else if (playerOneSetBoard.querySelector(`#${event.target.dataset.id}`).className !== "occupied") {
-      itsATrap.play()
-      xWingFire.play()
+      vaderDontFail.play()
+      tieFighterFire.play()
     event.target.style.backgroundColor = "yellow"
     playerOneSetBoard.querySelector(`#${event.target.dataset.id}`).style.backgroundColor = "yellow"
     this.style.display = "none"
