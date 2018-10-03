@@ -28,6 +28,7 @@ body {
   opacity: 0.7;
   border-radius: 8px;
   border-color: yellow;
+  font-size-adjust: auto:
 }
 
 img {
@@ -41,13 +42,21 @@ div.grid-square > img {
   opacity: 1;
 }
 
-#displayShip {
-  display: flex;
-  justify-content: space-around;
-
+ #displayShip {
+  margin: 0 0 20px 0px;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(5, 80px);
+  grid-template-rows: repeat(3,100px);
+  justify-content: center;
+  align-content: end;
 }
 
 #score-display{
   text-align: center;
   vertical-align: middle;
+}
+
+h5 {
+  font-size: auto;
 }
