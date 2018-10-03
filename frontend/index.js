@@ -38,27 +38,28 @@ function drop(event) {
     } else {
       document.getElementById("board").style.display = "none"
       document.getElementById("boardTwo").style.display = "grid"
-      const allEmpireShips = document.querySelectorAll(".empire")
-      const allRebelShips = document.querySelectorAll(".rebel")
+      // const allEmpireShips = document.querySelectorAll(".empire")
+      // const allRebelShips = document.querySelectorAll(".rebel")
       dropCounter = 0;
-      if (user2.side === "rebel") {
-        allEmpireShips.forEach((empire) => {
-          empire.style.display = "none"
-        })
-        allRebelShips.forEach((rebel) => {
-          rebel.style.display = "block"
-        })
-
-      } //end of if statement
-      else {
-        allRebelShips.forEach((rebel) => {
-          rebel.style.display = "none"
-        })
-        allEmpireShips.forEach((empire) => {
-          empire.style.display = "block"
-        })
-
-      }
+      displayShips(user2)
+      // if (user2.side === "rebel") {
+      //   allEmpireShips.forEach((empire) => {
+      //     empire.style.display = "none"
+      //   })
+      //   allRebelShips.forEach((rebel) => {
+      //     rebel.style.display = "block"
+      //   })
+      //
+      // } //end of if statement
+      // else {
+      //   allRebelShips.forEach((rebel) => {
+      //     rebel.style.display = "none"
+      //   })
+      //   allEmpireShips.forEach((empire) => {
+      //     empire.style.display = "block"
+      //   })
+      //
+      // }
     }
   }
 }
@@ -67,41 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const rows = 10;
   const cols = 10;
   const squareSize = 75;
-  const side = "empire"
 
-  const allEmpireShips = document.querySelectorAll(".empire")
-  const allRebelShips = document.querySelectorAll(".rebel")
-
-  //fetch request for player1
-  fetch('http://localhost:3000/users/1')
-    .then((response) => {
-      return response.json()
-    })
-    .then((userData) => {
-      user = userData
-      user.side = "empire" //adding another hash to user with side = empire
-      if (user.side === "empire") {
-        allRebelShips.forEach((rebel) => {
-          rebel.style.display = "none"
-        })
-
-      } //end of if statement
-      else {
-        allEmpireShips.forEach((empire) => {
-          empire.style.display = "none"
-        })
-      }
-    })
-
-  //fetch request for player2
-  fetch('http://localhost:3000/users/2')
-    .then((response) => {
-      return response.json()
-    })
-    .then((userData) => {
-      user2 = userData
-      user2.side = "rebel" //adding another hash to user2 with side = rebel
-    })
+  const userForm = document.getElementById('user-form')
 
   // get the board container element
   //board will be the same representation to playerTwoGuess
@@ -110,6 +78,51 @@ document.addEventListener('DOMContentLoaded', () => {
   const boardTwo = document.getElementById("boardTwo") //second board
   const playerOneGuess = document.getElementById("playerOneGuess")
   const playerTwoGuess = document.getElementById("playerTwoGuess")
+  const gameArea = document.getElementById('gameArea')
+
+  userForm.addEventListener('submit', event => {
+    event.preventDefault();
+    const player1 = userForm.querySelectorAll('input')[0].value
+    const player2 = userForm.querySelectorAll('input')[1].value
+    fetch('http://localhost:3000/users', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: player1,
+        win: 0,
+        loss: 0,
+        turn: false
+      })
+    }).then(res => res.json()).then(userData => {
+      user = userData
+      user.side = 'rebel'
+    }).then( () => {
+      fetch('http://localhost:3000/users', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: player2,
+          win: 0,
+          loss: 0,
+          turn: false
+        })
+      }).then(res => res.json()).then(userData => {
+        user2 = userData
+        user2.side = 'empire'
+        userForm.parentElement.style.display = 'none'
+        gameArea.style.display = 'block'
+      }).then( () => {
+        displayShips(user)
+      })
+    })
+  })
+
 
   // make the grid columns and rows
   for (i = 0; i < cols; i++) {
@@ -197,7 +210,7 @@ function attackShips() {
         playerTwoSetBoard.style.display = "grid"
         document.getElementById("playerTwoGuess").style.display = "grid"
       } else if (playerTwoSetBoard.querySelector(`#${event.target.dataset.id}`).className !== "occupied") {
-      tieFighterFire.play()  
+      tieFighterFire.play()
       event.target.style.backgroundColor = "yellow"
       playerTwoSetBoard.querySelector(`#${event.target.dataset.id}`).style.backgroundColor = "yellow"
       this.style.display = "none"
@@ -230,6 +243,26 @@ function attackShips() {
     document.getElementById("playerOneGuess").style.display = "grid"
       }
     }
+  }
+}
+
+function displayShips(playerOne){
+  const allEmpireShips = document.querySelectorAll(".empire")
+  const allRebelShips = document.querySelectorAll(".rebel")
+  if(playerOne.side === 'rebel'){
+    allEmpireShips.forEach(ship => {
+      ship.style.display = 'none';
+    })
+    allRebelShips.forEach(ship => {
+      ship.style.display = 'block';
+    })
+  }else{
+    allRebelShips.forEach(ship => {
+      ship.style.display = 'none';
+    })
+    allEmpireShips.forEach(ship => {
+      ship.style.display = 'block';
+    })
   }
 }
 

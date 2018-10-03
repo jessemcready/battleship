@@ -10,89 +10,100 @@
 </head>
 
 <body>
-  <div id="playerOneGuess" style="display: none;">
-
+  <div id="user-form-container">
+    <form id="user-form">
+      <label>Rebel</label>
+      <input class="playerName" type="text" placeholder="Player One"><br>
+      <label>Empire</label>
+      <input class="playerName" type="text" placeholder="Player Two"><br>
+      <input type="submit" id="submitPlayers" value="Play Game">
+    </form>
   </div>
+  <div id="gameArea" style="display: none;">
+    <div id="playerOneGuess" style="display: none;">
 
-  <div id="playerTwoGuess" style="display: none;">
-
-  </div>
-
-  <div id="board" ondrop="drop(event)" ondragover="allowDrop(event)">
-  </div>
-
-  <div id="boardTwo" ondrop="drop(event)" ondragover="allowDrop(event)" style="display: none;">
-  </div>
-
-  <div id="score-display">
-    <h3>Player One Score</h3>
-    <h5 id="playerScore">0</h5>
-    <h3>Player Two Score</h3>
-    <h5 id="playerTwoScore">0</h5>
-  </div>
-
-  <div id="displayShip">
-
-    <div class="empire">
-      <h5>AT-ST Walker</h5>
-      <img id="empire_at-st_walker.jpeg" src="assets/images/empire_at-st_walker.jpeg" data-id="2" draggable="true" ondragstart="drag(event)">
-      <h6>Value: 2</h6>
     </div>
 
-    <div class="empire">
-      <h5>Death Star</h5>
-      <img id="empire_death-Star.jpeg" src="assets/images/empire_death-Star.jpeg" data-id="5" draggable="true" ondragstart="drag(event)">
-      <h6>Value: 5</h6>
+    <div id="playerTwoGuess" style="display: none;">
+
     </div>
 
-    <div class="empire">
-      <h5>Imperial Shuttle</h5>
-      <img id="empire_imperial_shuttle.jpeg" src="assets/images/empire_imperial_shuttle.jpeg" data-id="3" draggable="true" ondragstart="drag(event)">
-      <h6>Value: 3</h6>
+    <div id="board" ondrop="drop(event)" ondragover="allowDrop(event)">
     </div>
 
-    <div class="empire">
-      <h5>Star Destroyer</h5>
-      <img id="empire_star-Destroyer.jpeg" src="assets/images/empire_star-Destroyer.jpeg" data-id="4" draggable="true" ondragstart="drag(event)">
-      <h6>Value: 4</h6>
+    <div id="boardTwo" ondrop="drop(event)" ondragover="allowDrop(event)" style="display: none;">
     </div>
 
-    <div class="empire">
-      <h5>TIE Fighter</h5>
-      <img id="empire_tiex1-headon.jpg" src="assets/images/empire_tiex1-headon.jpg" data-id="3" draggable="true" ondragstart="drag(event)">
-      <h6>Value: 3</h6>
+    <div id="score-display">
+      <h3>Player One Score</h3>
+      <h5 id="playerScore">0</h5>
+      <h3>Player Two Score</h3>
+      <h5 id="playerTwoScore">0</h5>
     </div>
 
-    <div class="rebel">
-      <h5>Millennium Falcon</h5>
-      <img id="rebel_millennium-Falcon.jpeg" src="assets/images/rebel_millennium-Falcon.jpeg" data-id="5" draggable="true" ondragstart="drag(event)">
-      <h6>Value: 5</h6>
-    </div>
+    <div id="displayShip">
 
-    <div class="rebel">
-      <h5>Podracer Anakin</h5>
-      <img id="rebel_podracerAnakin.jpg" src="assets/images/rebel_podracerAnakin.jpg" data-id="2" draggable="true" ondragstart="drag(event)">
-      <h6>Value: 2</h6>
-    </div>
+      <div class="empire">
+        <h5>AT-ST Walker</h5>
+        <img id="empire_at-st_walker.jpeg" src="assets/images/empire_at-st_walker.jpeg" data-id="2" draggable="true" ondragstart="drag(event)">
+        <h6>Value: 2</h6>
+      </div>
 
-    <div class="rebel">
-      <h5>Republic Attack Gunship</h5>
-      <img id="rebel_republic_attack_gunship.jpeg" src="assets/images/rebel_republic_attack_gunship.jpeg" data-id="3" draggable="true" ondragstart="drag(event)">
-      <h6>Value: 3</h6>
-    </div>
+      <div class="empire">
+        <h5>Death Star</h5>
+        <img id="empire_death-Star.jpeg" src="assets/images/empire_death-Star.jpeg" data-id="5" draggable="true" ondragstart="drag(event)">
+        <h6>Value: 5</h6>
+      </div>
 
-    <div class="rebel">
-      <h5>Tantive IV</h5>
-      <img id="rebel_tantive_4.jpeg" src="assets/images/rebel_tantive_4.jpeg" data-id="4" draggable="true" ondragstart="drag(event)">
-      <h6>Value: 4</h6>
-    </div>
+      <div class="empire">
+        <h5>Imperial Shuttle</h5>
+        <img id="empire_imperial_shuttle.jpeg" src="assets/images/empire_imperial_shuttle.jpeg" data-id="3" draggable="true" ondragstart="drag(event)">
+        <h6>Value: 3</h6>
+      </div>
 
-    <div class="rebel">
-      <h5>X-Wing Fighter</h5>
-      <img id="rebel_X-Wing-Fighter.jpeg" src="assets/images/rebel_X-Wing-Fighter.jpeg" data-id="3" draggable="true" ondragstart="drag(event)">
-      <h6>Value: 3</h6>
+      <div class="empire">
+        <h5>Star Destroyer</h5>
+        <img id="empire_star-Destroyer.jpeg" src="assets/images/empire_star-Destroyer.jpeg" data-id="4" draggable="true" ondragstart="drag(event)">
+        <h6>Value: 4</h6>
+      </div>
+
+      <div class="empire">
+        <h5>TIE Fighter</h5>
+        <img id="empire_tiex1-headon.jpg" src="assets/images/empire_tiex1-headon.jpg" data-id="3" draggable="true" ondragstart="drag(event)">
+        <h6>Value: 3</h6>
+      </div>
+
+      <div class="rebel">
+        <h5>Millennium Falcon</h5>
+        <img id="rebel_millennium-Falcon.jpeg" src="assets/images/rebel_millennium-Falcon.jpeg" data-id="5" draggable="true" ondragstart="drag(event)">
+        <h6>Value: 5</h6>
+      </div>
+
+      <div class="rebel">
+        <h5>Podracer Anakin</h5>
+        <img id="rebel_podracerAnakin.jpg" src="assets/images/rebel_podracerAnakin.jpg" data-id="2" draggable="true" ondragstart="drag(event)">
+        <h6>Value: 2</h6>
+      </div>
+
+      <div class="rebel">
+        <h5>Republic Attack Gunship</h5>
+        <img id="rebel_republic_attack_gunship.jpeg" src="assets/images/rebel_republic_attack_gunship.jpeg" data-id="3" draggable="true" ondragstart="drag(event)">
+        <h6>Value: 3</h6>
+      </div>
+
+      <div class="rebel">
+        <h5>Tantive IV</h5>
+        <img id="rebel_tantive_4.jpeg" src="assets/images/rebel_tantive_4.jpeg" data-id="4" draggable="true" ondragstart="drag(event)">
+        <h6>Value: 4</h6>
+      </div>
+
+      <div class="rebel">
+        <h5>X-Wing Fighter</h5>
+        <img id="rebel_X-Wing-Fighter.jpeg" src="assets/images/rebel_X-Wing-Fighter.jpeg" data-id="3" draggable="true" ondragstart="drag(event)">
+        <h6>Value: 3</h6>
+      </div>
     </div>
-  </div>
+</div> <!-- end of board div -->
   <!-- end of displayShip -->
 <!-- Audio Files -->
   <audio id="TIE_Fighter_Fire" src="assets/audio/TIE_Fighter_Fire.mp3"></audio>
