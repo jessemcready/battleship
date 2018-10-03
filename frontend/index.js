@@ -127,9 +127,10 @@ document.addEventListener('DOMContentLoaded', () => {
       square2.id = 't' + j + i;
       square2.className = "grid-square"
 
-      guessOne.dataset.id = 's' + j + i;
-      guessTwo.dataset.id = 't' + j + i;
-
+      guessOne.dataset.id = 't' + j + i;
+      guessOne.className = "grid-square"
+      guessTwo.dataset.id = 's' + j + i;
+      guessTwo.className = "grid-square"
 
     }
   }
@@ -137,6 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
   //score container
   const scoreContainer = document.getElementById("score-display")
   scoreCounter = 0;
+  scoreCounterTwo = 0;
 
   const allShipsContainer = document.getElementById("displayShip")
 
@@ -160,35 +162,71 @@ document.addEventListener('DOMContentLoaded', () => {
 }) //end of dom loader
 
 function attackShips() {
-  console.log(this)
-  if (event.target.parentElement.className === "grid-square" || event.target.parentElement.className === "occupied") {
-    console.log(event.target)
 
-    //if hit we're going to increment the score counter,
-    //and set the playerScore id HTML to the score counter
-    if (event.target.parentElement.className === "occupied") {
-      event.target.src = "assets/images/deathstar_implosion.jpeg"
-      scoreCounter++
-      const playerScore = document.getElementById("playerScore")
-      playerScore.innerText = scoreCounter
+  const playerOneSetBoard = document.getElementById("board")
+  const playerTwoSetBoard = document.getElementById("boardTwo")
 
-      if (scoreCounter === 17) {
+  const playerScore = document.getElementById("playerScore")
+  const playerTwoScore = document.getElementById("playerTwoScore")
+
+
+  //check this.id for playerOne click is equal to board or boardTwo
+  if (event.target.className === "grid-square") {
+    if (this.id === "playerOneGuess") {
+      if (playerTwoSetBoard.querySelector(`#${event.target.dataset.id}`).className === "occupied") {
+        event.target.style.backgroundColor = "red"
+        playerTwoSetBoard.querySelector(`#${event.target.dataset.id}`).innerHTML = `<img src="assets/images/deathstar_implosion.jpeg">`
+        scoreCounter++
+        playerScore.innerText = scoreCounter
+        if (scoreCounter === 17) {
+          alert("You won!")
+        }
+        this.style.display = "none"
+        playerOneSetBoard.style.display = "none"
+        playerTwoSetBoard.style.display = "grid"
+        document.getElementById("playerTwoGuess").style.display = "grid"
+      } else if (playerTwoSetBoard.querySelector(`#${event.target.dataset.id}`).className !== "occupied") {
+      event.target.style.backgroundColor = "yellow"
+
+      playerTwoSetBoard.querySelector(`#${event.target.dataset.id}`).style.backgroundColor = "yellow"
+      this.style.display = "none"
+      playerOneSetBoard.style.display = "none"
+      playerTwoSetBoard.style.display = "grid"
+      document.getElementById("playerTwoGuess").style.display = "grid"
+    }
+  } //end of if statement in line 169
+  else {
+    if (playerOneSetBoard.querySelector(`#${event.target.dataset.id}`).className === "occupied") {
+      event.target.style.backgroundColor = "red"
+      playerOneSetBoard.querySelector(`#${event.target.dataset.id}`).innerHTML = `<img src="assets/images/deathstar_implosion.jpeg">`
+      scoreCounterTwo++
+      playerTwoScore.innerText = scoreCounterTwo
+      if (scoreCounterTwo === 17) {
         alert("You won!")
       }
-
-      //if it's a miss, then nothing happens.
-    } else if (event.target.parentElement.className !== "occupied") {
-      document.getElementById(event.target.id).style.backgroundColor = "yellow"
+      this.style.display = "none"
+      playerTwoSetBoard.style.display = "none"
+      playerOneSetBoard.style.display = "grid"
+      document.getElementById("playerOneGuess").style.display = "grid"
+    } else if (playerOneSetBoard.querySelector(`#${event.target.dataset.id}`).className !== "occupied") {
+    event.target.style.backgroundColor = "yellow"
+    playerOneSetBoard.querySelector(`#${event.target.dataset.id}`).style.backgroundColor = "yellow"
+    this.style.display = "none"
+    playerTwoSetBoard.style.display = "none"
+    playerOneSetBoard.style.display = "grid"
+    document.getElementById("playerOneGuess").style.display = "grid"
+      }
     }
   }
-
 }
 
 //Todo list:
 //guess board should display hit or miss once all ship positions have been set
+//alert the user when they used up their value points
 //increment score
+
+//secondary (styling)
 //if it's a hit (sound effect)
 //use the h6 tag where the Value text is to decrement the Value, everytime its used
-//alert the user when they used up their value points
 //include the CSS style
 //include audio
