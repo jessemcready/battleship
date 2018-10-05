@@ -71,6 +71,20 @@ document.addEventListener('DOMContentLoaded', () => {
   let scoreCounter = 0;
   let scoreCounterTwo = 0;
 
+  //leaderboard
+  const leaderboard = document.getElementById("leaderboard")
+  fetch('http://localhost:3000/leaderboard')
+  .then(response => response.json())
+  .then(leaderboardJsonObject => {
+    const leaders = leaderboardJsonObject.map((leader) => {
+      return (`
+        <p>${leader.name}</p>
+        <p>${leader.win} - ${leader.loss}</p>
+        `)
+    }).join('')
+    leaderboard.innerHTML += leaders
+  })
+
   //socket******************************************************//
   socket.on("battle", function() {
     // when we get the battle event, we show the guessing board
@@ -108,8 +122,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     // we then grab the form container
     const formContainer = document.getElementById("user-form-container")
+    const mainPageHeader = document.getElementById("main-page-header")
     // hide the form container
     formContainer.style.display = 'none'
+    mainPageHeader.style.display = 'none'
     // and display the game area, which at first is just your board to set
     // and your ships
     gameArea.style.display = 'block'
@@ -173,7 +189,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // check to see if we won the game
         if (scoreCounter === 17) {
           explodeShip.play()
-          alert("You won!")
+          alert(`${user.name} has won!`)
+          // add win to user in the database
+          socket.emit("add win", user)
         } else {
           // if we didn't win yet, emit 'change' to change sides
           socket.emit('change');
@@ -184,6 +202,32 @@ document.addEventListener('DOMContentLoaded', () => {
         // and change sides
         socket.emit('change');
       }
+    }
+  })
+
+  socket.on('add win to user', function(winningUser){
+    if(JSON.stringify(winningUser) === JSON.stringify(user)){
+      fetch(`http://localhost:3000/users/${user.id}`, {
+        method: 'PATCH',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+          },
+        body: {
+          win: ++user.win
+        }
+      })
+    } else{
+      fetch(`http://localhost:3000/users/${user.id}`, {
+        method: 'PATCH',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+          },
+        body: {
+          loss: ++user.loss
+        }
+      })
     }
   })
 

@@ -57,6 +57,17 @@ div.grid-square > img {
   vertical-align: middle;
 }
 
+#leaderboard{
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  vertical-align: middle;
+  margin-left: 75px;
+  margin-top: 10px;
+  border: 1px solid;
+}
+
 
 #user-form-container{
   position: fixed;
@@ -74,7 +85,7 @@ div.grid-square > img {
 #main-page-header{
   text-align: center;
   vertical-align: middle;
-  margin: 230px;
+  margin: 200px;
 }
 
 .playerName{

@@ -74,6 +74,11 @@ io.on("connection", function(socket) {
       io.emit('changeTurns')
     })
 
+    // when we receive a client:add win
+    socket.on('add win', function(user){
+      // server:emit add win to user
+      io.emit('add win to user', user)
+    })
 
 });
 
