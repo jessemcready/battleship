@@ -213,9 +213,9 @@ document.addEventListener('DOMContentLoaded', () => {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
           },
-        body: {
+        body: JSON.stringify({
           win: ++user.win
-        }
+        })
       })
     } else{
       fetch(`http://localhost:3000/users/${user.id}`, {
@@ -224,9 +224,9 @@ document.addEventListener('DOMContentLoaded', () => {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
           },
-        body: {
+        body: JSON.stringify({
           loss: ++user.loss
-        }
+        })
       })
     }
   })
