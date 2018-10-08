@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   //leaderboard
   const leaderboard = document.getElementById("leaderboard")
-  fetch('http://localhost:3000/leaderboard')
+  fetch('https://salty-beyond-62362.herokuapp.com/leaderboard')
   .then(response => response.json())
   .then(leaderboardJsonObject => {
     const leaders = leaderboardJsonObject.map((leader) => {
@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   socket.on('add win to user', function(winningUser){
     if(JSON.stringify(winningUser) === JSON.stringify(user)){
-      fetch(`http://localhost:3000/users/${user.id}`, {
+      fetch(`https://salty-beyond-62362.herokuapp.com/users/${user.id}`, {
         method: 'PATCH',
         headers: {
           'Accept': 'application/json',
@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
       })
     } else{
-      fetch(`http://localhost:3000/users/${user.id}`, {
+      fetch(`https://salty-beyond-62362.herokuapp.com/users/${user.id}`, {
         method: 'PATCH',
         headers: {
           'Accept': 'application/json',
@@ -262,7 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const player1 = userForm.querySelectorAll('input')[0].value
     const player2 = userForm.querySelectorAll('input')[1].value
     // make a post request to make these users
-    fetch('http://localhost:3000/users', {
+    fetch('https://salty-beyond-62362.herokuapp.com/users', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -277,7 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }).then(res => res.json()).then(userData => {
       user = userData
     }).then( () => {
-      fetch('http://localhost:3000/users', {
+      fetch('https://salty-beyond-62362.herokuapp.com/users', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
