@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :ships
+  resources :ships, only: :index #only displays the index.
   resources :users
   get '/leaderboard', to: 'users#leaderboard'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

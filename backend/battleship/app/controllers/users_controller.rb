@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     render json: @users, status: :ok
   end
 
-private
+ private
 
   def user_params
     params.require(:user).permit(:name, :win, :loss)
