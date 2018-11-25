@@ -2,6 +2,8 @@
 
 Play Battleship across two computers using this web app!
 
+## [Demo Video](https://www.youtube.com/watch?v=zDsfUd7383A)
+
 ## Technology Stack
 
 Written in vanilla Javascript, this app uses [socket.io](socket.io) and [Express](https://expressjs.com/) to deliver real time information betweeen two clients.  
